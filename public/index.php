@@ -3,6 +3,14 @@ use App\Router;
 
 require '../vendor/autoload.php';
 
+//Nous donne le temps actuel avec les miliscondes pour aider le debug et la performance
+define('DEBUG_TIME', microtime(true));
+
+//Partie de debug gérée grace à flip/whoops
+$whoops = new Whoops\Run();
+$whoops->pushHandler(new Whoops\Handler\PrettyPageHandler());
+$whoops->register();
+
 $router = new Router(dirname(__DIR__) . '/views');
 try {
     $router
