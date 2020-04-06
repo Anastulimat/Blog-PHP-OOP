@@ -21,7 +21,7 @@ $categories = [];
 //Remplir la base de données pour la table post avec des infos du faker
 for($i = 0; $i < 50; $i++)
 {
-    $pdo->exec("INSERT INTO post SET name='{$faker->sentence()}', slug='{$faker->slug()}', created_at='{$faker->date()} {$faker->time()}', content='{$faker->paragraph(rand(3, 15), true)}'");
+    $pdo->exec("INSERT INTO post SET name='{$faker->sentence(4)}', slug='{$faker->slug()}', created_at='{$faker->date()} {$faker->time()}', content='{$faker->paragraph(rand(3, 15), true)}'");
     $posts[] = $pdo->lastInsertId();
 }
 

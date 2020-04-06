@@ -47,6 +47,15 @@ class Router
         return $this;
     }
 
+    public function url(string $name, array $params = [])
+    {
+        try {
+            return $this->router->generate($name, $params);
+        } catch(Exception $e) {
+            return null;
+        }
+    }
+
     /**
      * Vérifier s'il y a une correspondance entre la route demandée et une route enregistrée
      * Si oui charger la vue correspondance
@@ -57,6 +66,7 @@ class Router
     {
         $match = $this->router->match();
         $view = $match['target'];
+        $router = $this;
         ob_start();
         require $this->viewPath . DIRECTORY_SEPARATOR . $view . '.php';
         $content = ob_get_clean();
