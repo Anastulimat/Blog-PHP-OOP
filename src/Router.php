@@ -47,6 +47,14 @@ class Router
         return $this;
     }
 
+    /**
+     * Permet de génére un url et lui donner un nom
+     *
+     * @param string $name
+     * @param array  $params
+     *
+     * @return string|null
+     */
     public function url(string $name, array $params = [])
     {
         try {
@@ -66,6 +74,7 @@ class Router
     {
         $match = $this->router->match();
         $view = $match['target'];
+        $params = $match['params'];
         $router = $this;
         ob_start();
         require $this->viewPath . DIRECTORY_SEPARATOR . $view . '.php';
